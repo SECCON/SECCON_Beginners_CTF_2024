@@ -1,0 +1,23 @@
+version: "3"
+
+services:
+  app:
+    build: ./app
+    restart: always
+    environment:
+      - PORT=3000
+      - FLAG=ctf4b{15_my_5c0r3_700000_b1g?}
+
+  nginx:
+    build: ./nginx
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    links:
+      - app
+    depends_on:
+      - app
+    volumes:
+      - /etc/seccon/_.seccon.games.crt:/etc/nginx/certs/server.crt:ro
+      - /etc/seccon/_.seccon.games.key:/etc/nginx/certs/server.key:ro

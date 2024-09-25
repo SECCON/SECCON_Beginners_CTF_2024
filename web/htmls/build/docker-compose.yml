@@ -1,0 +1,22 @@
+services:
+  uwsgi:
+    build: ./crawler
+    environment:
+      TZ: "Asia/Tokyo"
+    expose:
+      - "7777"
+    restart: always
+  nginx:
+    build: ./nginx
+    volumes:
+      - ./nginx/log:/var/log/nginx
+      - /etc/seccon/_.seccon.games.crt:/etc/nginx/certs/server.crt:ro
+      - /etc/seccon/_.seccon.games.key:/etc/nginx/certs/server.key:ro
+    links:
+      - uwsgi
+    ports:
+      - "80:80"
+      - "443:443"
+    environment:
+      TZ: "Asia/Tokyo"
+    restart: always

@@ -1,0 +1,39 @@
+services:
+  wooorker2:
+    build: ./app
+    environment:
+      - PORT=34467
+      - FLAG=ctf4b{x55_50m371m35_m4k35_w0rk3r_vuln3r4bl3}
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - ADMIN_PASSWORD=841cdbefb3625701620a3df8e5cf1654cec7120caa17dbe8805cc9ca3260f154
+  nginx:
+    build: ./nginx
+    volumes:
+      - /etc/seccon/_.seccon.games.crt:/etc/nginx/certs/server.crt:ro
+      - /etc/seccon/_.seccon.games.key:/etc/nginx/certs/server.key:ro
+    ports:
+      - 80:80
+      - 443:443
+    depends_on:
+      - wooorker2
+    restart: always
+  redis:
+    image: redis:7-alpine
+    volumes:
+      - redis:/data
+    ports:
+      - 16379:6379
+    restart: always
+  crawler:
+    build: ./crawler
+    restart: always
+    environment:
+      - APP_URL=http://wooorker2:34467/
+      - ADMIN_USERNAME=admin
+      - ADMIN_PASSWORD=841cdbefb3625701620a3df8e5cf1654cec7120caa17dbe8805cc9ca3260f154
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+
+volumes:
+  redis:

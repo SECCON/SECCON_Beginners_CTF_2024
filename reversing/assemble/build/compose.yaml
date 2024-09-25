@@ -1,0 +1,18 @@
+services:
+  app:
+    build: app
+    environment:
+      FLAG: "ctf4b{gre4t_j0b_y0u_h4ve_m4stered_4ssemb1y_14ngu4ge}"
+    platform: linux/amd64
+    volumes:
+      - ./logs:/app/logs
+    restart: always
+  nginx:
+    build: nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - /etc/seccon/_.seccon.games.crt:/etc/nginx/certs/server.crt:ro
+      - /etc/seccon/_.seccon.games.key:/etc/nginx/certs/server.key:ro
+    restart: always

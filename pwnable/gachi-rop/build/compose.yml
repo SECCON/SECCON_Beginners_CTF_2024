@@ -1,0 +1,7 @@
+services:
+  gachi-rop:
+    build: .
+    ports:
+      - 4567:5000
+    privileged: true
+    restart: unless-stopped

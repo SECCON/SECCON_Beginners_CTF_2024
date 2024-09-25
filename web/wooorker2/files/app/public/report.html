@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>Wooorker2</title>
+</head>
+<body>
+    <h1>Wooorker2 - Report</h1>
+    <p>ログイン機能の脆弱性を見つけたら報告してください。</p>
+    <p>例えば、<code>login?next=/</code>を送信すると<code>admin</code>が<code>https://wooorker2.beginners.seccon.games/login?next=/</code>にアクセスし、ログインを行います。</p>
+    <input type="text" id="path" placeholder="login?next=/">
+    <button onclick="report()">Report</button>
+    <div id="messageContainer"></div>
+    <script>
+        async function report() {
+            const path = document.getElementById('path').value;
+            const response = await fetch('/report', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ path })
+            });
+            const result = await response.json();
+            if (response.ok) {
+                document.getElementById('messageContainer').innerText = result.message;
+            } else {
+                document.getElementById('messageContainer').innerText = result.error;
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+services:
+  app:
+    build: ./app
+    restart: always
+    environment:
+      - PORT=8080
+
+  nginx:
+    build: ./nginx
+    restart: always
+    ports:
+      - "8080:80"
+    links:
+      - app
+    depends_on:
+      - app

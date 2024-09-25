@@ -1,0 +1,28 @@
+services:
+  nginx:
+    build: ./nginx
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+      - /etc/seccon/_.seccon.games.crt:/etc/nginx/certs/server.crt:ro
+      - /etc/seccon/_.seccon.games.key:/etc/nginx/certs/server.key:ro
+    depends_on:
+      - backend
+    ports:
+      - "80:80"
+      - "443:443"
+    environment:
+      TZ: "Asia/Tokyo"
+    restart: always
+  backend:
+    build: ./app
+    environment:
+      - ADMIN_USERNAME=${ADMIN_USERNAME}
+      - ADMIN_PASSWORD=${ADMIN_PASSWORD}
+      - FLAG=${FLAG}
+    depends_on:
+      - mongodb
+
+  mongodb:
+    image: mongo
+    volumes:
+      - ./data/db:/data/db

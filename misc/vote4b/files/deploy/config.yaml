@@ -1,0 +1,18 @@
+accounts:
+  - name: owner
+    balance: 1ether
+  - name: user
+    balance: 1ether
+
+deployments:
+  - name: level_contract
+    path: "./src/Setup.sol:Setup"
+    private_key: owner_private_key
+
+exposed:
+  - level_contract_address
+  - user_private_key
+  - user_address
+
+verifier: "python /app/verifier.py"
+flag_path: /app/flag.txt

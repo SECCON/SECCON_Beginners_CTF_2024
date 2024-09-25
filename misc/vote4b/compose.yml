@@ -1,0 +1,22 @@
+services:
+  spawner:
+    image: ghcr.io/tyage/container-spawner:latest
+    environment:
+      - SPAWNER_IMAGE_NAME=ctf4b-vote4b
+      - SPAWNER_TIME_LIMIT=600
+      - SPAWNER_CONTAINER_PORT=8000
+      - SPAWNER_HOSTNAME=vote4b.beginners.seccon.games
+      - RECAPTCHA_PUBLIC_KEY=<REDACTED>
+      - RECAPTCHA_PRIVATE_KEY=<REDACTED>
+    ports:
+      - "8080:5000"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./build/spawner-template.html:/app/templates/index.html
+  cleaner:
+    image: ghcr.io/tyage/container-spawner-cleaner:latest
+    environment:
+      - SPAWNER_IMAGE_NAME=ctf4b-vote4b
+      - SPAWNER_TIME_LIMIT=600
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock

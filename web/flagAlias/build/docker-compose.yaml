@@ -1,0 +1,20 @@
+version: "3"
+
+services:
+  app:
+    build: ./app
+    restart: always
+    environment:
+      - PORT=8080
+
+  nginx:
+    build: ./nginx
+    volumes:
+      - /etc/seccon/_.seccon.games.crt:/etc/nginx/certs/server.crt:ro
+      - /etc/seccon/_.seccon.games.key:/etc/nginx/certs/server.key:ro
+    ports:
+      - 80:80
+      - 443:443
+    depends_on:
+      - app
+    restart: always

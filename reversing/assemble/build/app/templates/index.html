@@ -1,0 +1,148 @@
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Step Playground</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      .source {
+        font-family: "Source Code Pro", monospace;
+        font-optical-sizing: auto;
+        font-weight: 500;
+        font-style: normal;
+      }
+
+      .textarea {
+        height: 400px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="box">
+      <div class="columns">
+        <div class="column is-flex-grow-1 is-size-4 has-text-weight-semibold">
+          Step Playground
+        </div>
+        <div class="column is-flex-grow-0">
+          <a href="/reset" class="button is-danger">Reset Challenge</a>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <section class="px-3 py-3">
+        <p class="is-size-5 has-text-weight-semibold mb-2">
+          {% if id == "1" %}
+          Challenge 1. Please write <span class="source">0x123</span> to <span class="source">RAX</span>!
+          {% endif %}
+          {% if id == "2" %}
+          Challenge 2. Please write <span class="source">0x123</span> to <span class="source">RAX</span> and push it on stack!
+          {% endif %}
+          {% if id == "3" %}
+          Challenge 3. Please use <span class="source">syscall</span> to print <span class="source">Hello</span> on stdout!
+          {% endif %}
+          {% if id == "4" %}
+          Challenge 4. Please read <span class="source">flag.txt</span> file and print it to
+          stdout!
+          {% endif %}
+        </p>
+        <p>
+          1. Only <span class="source">mov</span>,
+          <span class="source">push</span>,
+          <span class="source">syscall</span> instructions can be used.
+        </p>
+        <p>2. The number of instructions should be less than 25.</p>
+      </section>
+      <section class="px-3 py-3">
+        <div class="columns">
+          <div class="column is-two-thirds">
+            <form method="POST" action="/">
+              <div class="field">
+                <div class="control">
+                  <textarea
+                    type="text"
+                    name="code"
+                    placeholder="mov rax, 0x1
+mov rbx, 0x2"
+                    class="textarea source has-fixed-size"
+                  ></textarea>
+                </div>
+              </div>
+              <div class="control">
+                <button type="submit" class="button is-link">Run</button>
+              </div>
+            </form>
+          </div>
+          <div class="column is-one-third">
+            <article class="message is-info">
+              <div class="message-header">
+                <p>Debug</p>
+              </div>
+              <div class="message-body source">
+                <p>RAX : {{ rax }}</p>
+                <p>RBX : {{ rbx }}</p>
+                <p>RCX : {{ rcx }}</p>
+                <p>RDX : {{ rdx }}</p>
+                <p>RSI : {{ rsi }}</p>
+                <p>RDI : {{ rdi }}</p>
+                <p>RBP : {{ rbp }}</p>
+                <p>RIP : {{ rip }}</p>
+                <p>RSP : {{ rsp }}</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+      <section class="px-3 py-3">
+        <article class="message is-success">
+          <div class="message-header">
+            <p>Output</p>
+          </div>
+          <div class="message-body source">
+            {% if stdout %}
+            <p>{{ stdout }}</p>
+            {% endif %}
+          </div>
+        </article>
+        {% if message %}
+        <article class="message is-primary">
+          <div class="message-header">
+            <p>Message</p>
+          </div>
+          <div class="message-body source">
+            <p>{{ message }}</p>
+          </div>
+        </article>
+        {% endif %}
+        {% if error %}
+        <article class="message is-danger">
+          <div class="message-header">
+            <p>Error</p>
+          </div>
+          <div class="message-body source">
+            <p>{{ error }}</p>
+          </div>
+        </article>
+        {% endif %}
+      </section>
+    </div>
+  </body>
+  <script>
+    // To save the code in the textarea
+    const textarea = document.querySelector("textarea");
+    textarea.value = localStorage.getItem("code") || "";
+    textarea.addEventListener("input", () => {
+      localStorage.setItem("code", textarea.value);
+    });
+  </script>
+</html>

@@ -1,0 +1,7 @@
+{
+  "tasks": {
+    // DO NOT USE --allow-read flag
+    "run": "DENO_NO_PROMPT=1 deno run --allow-sys --allow-net --allow-env main.ts",
+    "test": "DENO_NO_PROMPT=1 deno test --allow-sys --allow-net --allow-env"
+  }
+}

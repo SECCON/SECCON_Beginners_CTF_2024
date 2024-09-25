@@ -1,0 +1,17 @@
+services:
+  app:
+    build: ./app
+    restart: always
+    environment:
+      - PORT=3000
+      - FLAG=fake{fake_flag}
+
+  nginx:
+    build: ./nginx
+    restart: always
+    ports:
+      - "8080:80"
+    links:
+      - app
+    depends_on:
+      - app

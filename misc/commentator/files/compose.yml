@@ -1,0 +1,7 @@
+services:
+  python:
+    build: .
+    ports:
+      - 4444:5000
+    privileged: true
+    restart: unless-stopped

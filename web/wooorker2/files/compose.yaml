@@ -1,0 +1,35 @@
+services:
+  wooorker2:
+    build: ./app
+    environment:
+      - PORT=34467
+      - FLAG=ctf4b{dummy_flag}
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - ADMIN_PASSWORD=admin
+  nginx:
+    build: ./nginx
+    ports:
+      - 34467:80
+    depends_on:
+      - wooorker2
+    restart: always
+  redis:
+    image: redis:7-alpine
+    volumes:
+      - redis:/data
+    ports:
+      - 16379:6379
+    restart: always
+  crawler:
+    build: ./crawler
+    restart: always
+    environment:
+      - APP_URL=http://wooorker2:34467/
+      - ADMIN_USERNAME=admin
+      - ADMIN_PASSWORD=admin
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+
+volumes:
+  redis:

@@ -1,0 +1,24 @@
+services:
+  spawner:
+    image: ghcr.io/tyage/container-spawner:latest
+    environment:
+      - SPAWNER_IMAGE_NAME=ctf4b-flagalias
+      - SPAWNER_TIME_LIMIT=600
+      - SPAWNER_CONTAINER_PORT=8000
+      # TODO: Change hostname on deploy
+      - SPAWNER_HOSTNAME=vote4b.beginners.seccon.games
+      # TODO: Set recaptcha on deploy
+      - RECAPTCHA_PUBLIC_KEY=6LcYZvQpAAAAAALbPCD9qd5_gMFRArQ9Y6tvFal5
+      - RECAPTCHA_PRIVATE_KEY=6LcYZvQpAAAAANzmzKOwbou0woE47WJN-ukq5s8K
+    ports:
+      - "8080:5000"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./build/spawner-template.html:/app/templates/index.html
+  cleaner:
+    image: ghcr.io/tyage/container-spawner-cleaner:latest
+    environment:
+      - SPAWNER_IMAGE_NAME=ctf4b-vote4b
+      - SPAWNER_TIME_LIMIT=600
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock

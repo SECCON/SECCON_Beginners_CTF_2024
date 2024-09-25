@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Guess the Number Game!</title>
+    <meta charset="utf-8" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      let score = 0;
+      let numberToGuess = genNumber();
+
+      function genNumber() {
+        return Math.floor(Math.random() * 10);
+      }
+
+      function checkGuess() {
+        const userGuess = document.getElementById("guessInput").value;
+        const result = document.getElementById("result");
+        const scoreElement = document.getElementById("score");
+
+        if (userGuess == numberToGuess) {
+          result.textContent = "Correct!";
+          score++;
+          numberToGuess = genNumber();
+        } else {
+          result.textContent = "Incorrect. Try again.";
+        }
+
+        scoreElement.textContent = score;
+      }
+
+      function getRank() {
+        const rankElement = document.getElementById("rank");
+        const messageElement = document.getElementById("message");
+
+        fetch("/", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ input: `${score}` }),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            rankElement.textContent = data.rank ?? "-1";
+            messageElement.textContent =
+              data.message ?? "Error occurred.";
+          })
+          .catch((error) => {
+            rankElement.textContent = "-1";
+            messageElement.textContent = "Error occurred.";
+            console.error(error);
+          });
+      }
+    </script>
+  </head>
+  <body class="bg-gray-200 text-center py-10 px-5">
+    <div class="max-w-md mx-auto bg-white p-8 rounded shadow">
+      <h1 class="text-2xl font-bold mb-6">Guess the Number Game!</h1>
+      <p>Guess a number between 0 and 9.</p>
+
+      <input
+        type="number"
+        id="guessInput"
+        min="0"
+        max="9"
+        value="0"
+        class="border rounded w-8/12 p-3 my-2 text-xl"
+      />
+
+      <button
+        onclick="checkGuess()"
+        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+      >
+        Submit!
+      </button>
+
+      <div id="result" class="mt-6"></div>
+      <div>Current score: <span id="score" class="font-bold">0</span></div>
+    </div>
+
+    <div class="max-w-md mx-auto bg-white p-8 mt-10 rounded shadow">
+      <h1 class="text-2xl font-bold mb-6">Check your Ranking</h1>
+      <button
+        onclick="getRank()"
+        class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
+      >
+        Get Rank
+      </button>
+      <div class="mt-6">Rank: <span id="rank" class="font-bold"></span></div>
+      <div>Message: <span id="message" class="font-bold"></span></div>
+    </div>
+  </body>
+</html>

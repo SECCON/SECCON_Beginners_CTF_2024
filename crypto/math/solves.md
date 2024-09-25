@@ -1,0 +1,122 @@
+# math - Solves
+| Solved Rank | Team name |
+|:-----------:|:----------|
+| 1 | `Hacklava` |
+| 2 | `bocchitheflag` |
+| 3 | `denki2023` |
+| 4 | `onA1aCarte` |
+| 5 | `Wani Hackase` |
+| 6 | `Seikatsukowareru2` |
+| 7 | `toku4388` |
+| 8 | `keymoon` |
+| 9 | `InfInIty` |
+| 10 | `abbabaab` |
+| 11 | `KUICS` |
+| 12 | `MelMel` |
+| 13 | `Oysters` |
+| 14 | `na0chanZ` |
+| 15 | `VRC-procon` |
+| 16 | `Bk221b` |
+| 17 | `GrayHercules` |
+| 18 | `csopp` |
+| 19 | `u0w0u` |
+| 20 | `katagaitai` |
+| 21 | `hiikunZ` |
+| 22 | `Nakayoshi CTF Club` |
+| 23 | `SHIOSAKE-OMAKE` |
+| 24 | `abeshinee` |
+| 25 | `Yu_212` |
+| 26 | `superflip` |
+| 27 | `milnor` |
+| 28 | `katsudon14` |
+| 29 | `Saba` |
+| 30 | `b1ue` |
+| 31 | `gyoza_sec` |
+| 32 | `floret` |
+| 33 | `o-o` |
+| 34 | `P01TERGEIST` |
+| 35 | `ruthen71` |
+| 36 | `Tsuchinoko` |
+| 37 | `RiST` |
+| 38 | `MIS.X` |
+| 39 | `CLPWN` |
+| 40 | `ONsen` |
+| 41 | `kanto-boardgame` |
+| 42 | `sayonara` |
+| 43 | `SigBOC(BU)` |
+| 44 | `koidelab` |
+| 45 | `HelloJapwn` |
+| 46 | `zeosutt` |
+| 47 | `test777` |
+| 48 | `inuwashi2024` |
+| 49 | `karaagekarari` |
+| 50 | `Living_A_Calm_Life` |
+| 51 | `PGSeekers` |
+| 52 | `Hayamix` |
+| 53 | `H4nd4` |
+| 54 | `ctfrd` |
+| 55 | `t0kun1n4i` |
+| 56 | `15h` |
+| 57 | `HuruguraAndTonyu` |
+| 58 | `iQ Lab` |
+| 59 | `0nePadding` |
+| 60 | `TOMS` |
+| 61 | `He3Ha10` |
+| 62 | `Bue.js` |
+| 63 | `kingbonbi` |
+| 64 | `dde` |
+| 65 | `NITKC` |
+| 66 | `MMABeginners` |
+| 67 | `labo` |
+| 68 | `Tempura Knights` |
+| 69 | `kitibom` |
+| 70 | `Pwn4s0n1c` |
+| 71 | `imposters` |
+| 72 | `TeamKCS` |
+| 73 | `toe42` |
+| 74 | `TeamZAP` |
+| 75 | `p` |
+| 76 | `a01sa01to` |
+| 77 | `gym` |
+| 78 | `SakanaCushion` |
+| 79 | `adihsin` |
+| 80 | `kyukais` |
+| 81 | `AYM` |
+| 82 | `Riddle` |
+| 83 | `snds` |
+| 84 | `M-Ken` |
+| 85 | `()age` |
+| 86 | `TSG` |
+| 87 | `Thermae Romae` |
+| 88 | `trimscash` |
+| 89 | `team_rdx` |
+| 90 | `Team JM` |
+| 91 | `EAGLEJUMP` |
+| 92 | `kiwi_rice` |
+| 93 | `m1t0` |
+| 94 | `ual-sec` |
+| 95 | `yamunaku` |
+| 96 | `obo` |
+| 97 | `mizore_fuyu` |
+| 98 | `BlackBird` |
+| 99 | `JumpingCats4000` |
+| 100 | `Undefined` |
+| 101 | `kmc` |
+| 102 | `BugPakuPaku` |
+| 103 | `shinjiroid` |
+| 104 | `sniff the nekko` |
+| 105 | `gori-cure` |
+| 106 | `Turn of the "VoIP"` |
+| 107 | `Team33` |
+| 108 | `roaris` |
+| 109 | `ilovectf` |
+| 110 | `Htsbr` |
+| 111 | `sunf10wer` |
+| 112 | `cis` |
+| 113 | `suitengu` |
+| 114 | `HUIT` |
+| 115 | `GifuUniDigitalCreationCircle` |
+| 116 | `cktf9` |
+| 117 | `pzl` |
+| 118 | `sota` |
+| 119 | `JR.FOLKS` |

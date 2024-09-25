@@ -1,0 +1,8 @@
+services:
+  overflow:
+    build:
+      context: .
+    restart: always
+    privileged: true
+    ports:
+      - "9000:5000"

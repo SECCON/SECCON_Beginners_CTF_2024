@@ -1,0 +1,25 @@
+services:
+  nginx:
+    build: ./nginx
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - backend
+    ports:
+      - "41413:80"
+    environment:
+      TZ: "Asia/Tokyo"
+    restart: always
+  backend:
+    build: ./app
+    environment:
+      - ADMIN_USERNAME=${ADMIN_USERNAME}
+      - ADMIN_PASSWORD=${ADMIN_PASSWORD}
+      - FLAG=${FLAG}
+    depends_on:
+      - mongodb
+
+  mongodb:
+    image: mongo
+    volumes:
+      - ./data/db:/data/db

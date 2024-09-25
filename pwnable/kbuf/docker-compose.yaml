@@ -1,0 +1,13 @@
+services:
+  kbuf:
+    build: .
+    environment:
+      FLAG: ctf4b{uh0_uh0_k3rn3l_60r1_60r1_k3rn3l}
+
+    cpus: 4
+    mem_limit: 8G
+
+    ports:
+      - "9999:9999"
+    entrypoint: /etc/init.sh
+    restart: unless-stopped

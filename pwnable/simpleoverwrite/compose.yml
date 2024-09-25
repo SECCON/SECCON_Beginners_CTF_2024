@@ -1,0 +1,8 @@
+services:
+  overwrite:
+    build:
+      context: .
+    restart: always
+    privileged: true
+    ports:
+      - "9001:5000"
